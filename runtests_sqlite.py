@@ -23,7 +23,6 @@ if not settings.configured:
     )
 
 import django
-print django.VERSION
 if hasattr(django, 'setup'):
     django.setup()
 
