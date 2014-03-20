@@ -22,6 +22,10 @@ if not settings.configured:
         DEBUG=False,
     )
 
+import django
+if hasattr(django, 'setup'):
+    django.setup()
+
 from django_nose import NoseTestSuiteRunner
 
 
