@@ -1,3 +1,4 @@
+import django
 import uuid
 
 from django.db import connection, IntegrityError
@@ -5,6 +6,9 @@ from django.test import TestCase
 
 from uuidfield.tests.models import (AutoUUIDField, ManualUUIDField,
     NamespaceUUIDField, BrokenNamespaceUUIDField, HyphenatedUUIDField)
+
+if hasattr(django, 'setup'):
+    from uuidfield.tests.migrations import UUIDFieldMigrationTestCase
 
 
 class UUIDFieldTestCase(TestCase):
