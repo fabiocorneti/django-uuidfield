@@ -84,6 +84,16 @@ class UUIDField(Field):
             args = ()
         return getattr(uuid, 'uuid%s' % self.version)(*args)
 
+    def db_parameters(self, connection):
+        """
+        Replacement for db_type, providing a range of different return
+        values (type, checks)
+        """
+        return {
+            "type": self.db_type(connection=connection),
+            "check": None
+        }
+
     def db_type(self, connection=None):
         """
         Return the special uuid data type on Postgres databases.
